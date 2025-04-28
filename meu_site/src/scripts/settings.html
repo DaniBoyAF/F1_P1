@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - F1 Telemetry</title>
+  <link rel="stylesheet" href="styles/style2.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Settings</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="map.html">Map</a>
+        <a href="metry.html">Telemetry</a>
+      </nav>
+    </div>
+
+    <div class="main">
+      <form id="settingsForm">
+        <div class="form-group">
+          <label for="updateInterval">Update Interval (ms):</label>
+          <input type="number" id="updateInterval" name="updateInterval" min="100" step="100" />
+        </div>
+        <div class="form-group">
+          <label for="theme">Theme:</label>
+          <select id="theme" name="theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="udpPort">UDP Port:</label>
+          <input type="number" id="udpPort" name="udpPort" min="1024" max="65535" />
+        </div>
+        <div class="form-group">
+          <label for="language">Language:</label>
+          <select id="language" name="language">
+            <option value="en">English</option>
+            <option value="pt">Portuguese</option>
+          </select>
+        </div>
+        <button type="submit">Save Settings</button>
+      </form>
+
+      <div id="statusMessage"></div>
+    </div>
+  </div>
+
+  <script src="scripts/settings.js"></script>
+</body>
+</html>
+<!-- Compare this snippet from meu_site/src/scripts/settings.js: -->
