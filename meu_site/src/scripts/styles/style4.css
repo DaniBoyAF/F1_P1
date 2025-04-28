@@ -1,0 +1,22 @@
+.telemetry-data {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #555;
+  }
+  
+  .telemetry-data h2 {
+    font-size: 16px;
+    color: #ff0000;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .telemetry-data p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .telemetry-data strong {
+    color: #bbb;
+  }

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (email === "teste@email.com" && password === "123456") {
         alert("Login realizado com sucesso!");
         // redirecionar para outra página
-        window.location.href = "/dashboard.html"; 
+        window.location.href = "/index.html"; 
       } else {
         alert("Email ou senha incorretos.");
       }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Telemetry - F1</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/socket.io@4.7.5/client-dist/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Live Telemetry</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="map.html">Map</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </div>
+    <div class="main">
+      <div class="telemetry-data">
+        <h2>Telemetry Data</h2>
+        <p><strong>Speed:</strong> <span id="speed">0</span> km/h</p>
+        <p><strong>Throttle:</strong> <span id="throttle">0</span></p>
+        <p><strong>Brake:</strong> <span id="brake">0</span></p>
+        <p><strong>Gear:</strong> <span id="gear">0</span></p>
+        <p><strong>RPM:</strong> <span id="rpm">0</span></p>
+        <p><strong>Position (X, Y, Z):</strong> <span id="position">0, 0, 0</span></p>
+      </div>
+    </div>
+  </div>
+    <script src="scripts/live_telemetry.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
+<!-- Compare this snippet from meu_site/src/scripts/live_telemetry.js: -->
