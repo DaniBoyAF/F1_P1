@@ -8,6 +8,7 @@ from programação.car_status import process_car_status_data
 from threading import Thread
 import struct
 from flask import Flask
+from session import get_track_nome
 
 UDP_IP = "0.0.0.0"
 UDP_PORT = 20777
@@ -79,8 +80,19 @@ def verificar_limites_pista(posicao_x, posicao_z, track_limits, track_id):
     if not (limites["minX"] <= posicao_x <= limites["maxX"] and limites["minZ"] <= posicao_z <= limites["maxZ"]):
         return False  # Fora dos limites
     return True  # Dentro dos limites
-
-
+def handle_car_positions(posicoes, track_info):
+    for i in range(22):
+        posicao_x = posicoes[i]["x"]
+        posicao_z = posicoes[i]["z"]
+        track_id = track_info["trackId"]
+        if verificar_limites_pista(posicao_x, posicao_z, track_limits, track_id):
+            car_positions[f"Carro {i}"] = (posicao_x, posicao_z)  # Atualiza a posição do carro
+        else:
+            car_positions[f"Carro {i}"] = None  # Fora dos limites da pista
+def handle_car_session_data(session_packet):
+    track_id =session_packet["trackId"]
+    track_nome =get_track_nome(track_id)
+    
 
 def process_participants_data(data, posicoes):
     # O Packet Participants Data começa no byte 24
