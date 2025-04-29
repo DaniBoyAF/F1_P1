@@ -1,6 +1,5 @@
 import struct
 
-
 def process_telemetry_data(data, telemetria):
     telemetry_offset = 24
     car_data_size = 60

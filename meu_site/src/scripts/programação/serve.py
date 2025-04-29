@@ -4,7 +4,8 @@ import json
 import os
 import socket
 import threading
-import f1_data_parser  # Importa o módulo personalizado
+import struct
+from programação.udp_listener import coletar_dados_udp
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 socketio = SocketIO(app)

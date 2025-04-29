@@ -1,9 +1,9 @@
 import socket
 import struct
-from data_processor.motion import process_motion_data
-from data_processor.session import process_session_data
+from process_motion_data import process_motion_data
+from programação.session import process_session_data
 from track_data import track_limits, flag_map ,compound_map,track_paths,track_info
-from data_processor.car_status import process_car_status_data
+from programação.car_status import process_car_status_data
 from threading import Thread
 import struct
 from flask import Flask
