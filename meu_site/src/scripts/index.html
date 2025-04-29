@@ -11,6 +11,7 @@
         <aside class="sidebar">
             <nav>
                 <ul>
+                 
                     <li><a href="perfil.html"><button class="sidebar-btn">Perfil</button></a></li>
                     <li>Recorded<a href="Recorded.html"><button class="sidebar-btn">IR</button></a></li>
                     <li>Friends <button class="sidebar-btn">+</button></li>
@@ -19,6 +20,12 @@
                     <li><a href="help.html"><button class="sidebar-btn">Help</button></a></li>
                     <li><a href="about.html"><button class="sidebar-btn">About</button></a></li>
                     <li><a href="contact.html"><button class="sidebar-btn">Contact</button></a></li>
+                    {% if username %}
+                    <li class="sidebar-bt"><p>Bem-vindo, {{ username }}!</p></li>
+                    <li class="sidebar-btn"><a href="/logout">Sair</a></li>
+                            {% else %}
+                            </li>
+                            {% endif %}
                 </ul>
             </nav>
         </aside>
@@ -26,21 +33,21 @@
             <h1>Ready to drive?</h1>
             <div class="cards">
                 <div class="card">
-                    <div class="card-img"></div>
+                    <div class="card-img"><img width="110" height="50" src="https://img.icons8.com/ios-filled/50/graph.png" alt="graph"/></div>
                 
                     <h2>Telemetry</h2>
                     <p>Open your recorded laps and analyze/compare the telemetry data</p>
                     <a href="metry.html"><button class="card-btn">Open Telemetry</button></a>
                 </div>
                 <div class="card">
-                    <div class="card-img"></div>
+                    <div class="card-img"><img width="90" height="50" src="https://img.icons8.com/quill/50/map.png" alt="map"/></div>
                     <span class="beta">BETA</span>
                     <h2>Live Map</h2>
                     <p>Experience the game by visualizing drivers' positions on the track</p>
                   <a href="map.html"><button class="card-btn">Open Live Map</button></a>
                 </div>
                 <div class="card">
-                    <div class="card-img"></div>
+                    <div class="card-img"><img width="90" height="50" src="https://img.icons8.com/ios/50/time--v1.png" alt="time--v1"/></div>
                     <span class="beta">BETA</span>
                     <h2>Live Timing</h2>
                     <p>Stay updated with real-time lap times and</p>

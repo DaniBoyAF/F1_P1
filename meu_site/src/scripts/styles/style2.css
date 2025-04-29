@@ -26,7 +26,7 @@
   
   .header h1 {
     font-size: 24px;
-    color: #ff0000;
+    color: #f7f7f7;
     text-transform: uppercase;
   }
   
@@ -38,11 +38,11 @@
   }
   
   .header nav a:hover {
-    color: #ff0000;
+    color: #79dbc6;
   }
   
   .main {
-    background-color: #222;
+    background-color: #646464;
     padding: 20px;
     border-radius: 5px;
     border: 1px solid #555;
@@ -73,11 +73,11 @@
   .form-group input:focus,
   .form-group select:focus {
     outline: none;
-    border-color: #ff0000;
+    border-color: #860000;
   }
   
   button {
-    background-color: #ff0000;
+    background-color: #4d1515;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -88,7 +88,7 @@
   }
   
   button:hover {
-    background-color: #e60000;
+    background-color: #502f2f;
   }
   
   #statusMessage {

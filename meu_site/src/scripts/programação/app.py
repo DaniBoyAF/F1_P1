@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, session, redirect
 from flask_socketio import SocketIO
 from threading import Thread
 from datetime import datetime
@@ -8,6 +8,8 @@ import struct
 from programação.udp_listener import coletar_dados_udp
 from flask_cors import CORS
 from programação.udp_listener import car_positions
+import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # ==== Configurações do Flask e SocketIO ====
 app = Flask(__name__, static_folder='.', static_url_path='')
@@ -202,6 +204,54 @@ def save_telemetry():
         return jsonify({"status": "success", "message": "Dados salvos com sucesso!"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+app = Flask(__name__)
+app.secret_key = "segredo123"  # Use algo seguro!
+
+def get_db():
+    return sqlite3.connect('telemetria.db')
+
+@app.route('/')
+def index():
+    return render_template('index.html', username=session.get('username'))
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = generate_password_hash(request.form['password'])
+
+    try:
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO usuarios (username, password) VALUES (?, ?)", (username, password))
+        conn.commit()
+        conn.close()
+        return redirect('/')
+    except sqlite3.IntegrityError:
+        return "Usuário já existe"
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT password FROM usuarios WHERE username = ?", (username,))
+    result = cursor.fetchone()
+    conn.close()
+
+    if result and check_password_hash(result[0], password):
+        session['username'] = username
+        return redirect('/')
+    else:
+        return "Usuário ou senha inválidos"
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/')
 
 # ==== Inicialização ====
 if __name__ == "__main__":
