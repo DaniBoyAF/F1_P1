@@ -2,12 +2,12 @@
 "name": "meu-site",
   "version": "1.0.0",
   "description": "Um site simples criado como exemplo.",
-  "main": "src/index.html",
+  "main": "src/main.html",
   "scripts": {
     "start": "live-server src",
     "build": "echo 'Build script not defined'"
   },
-  "author": "Seu Nome",
+  "author": "Daniel Andrade",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

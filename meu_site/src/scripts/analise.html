@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Gráfico de Corrida F1</title>
+  <meta charset="UTF-8" />
+  <title>Gráfico Corrida F1</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-box-and-violin-plot/build/Chart.BoxPlot.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-box-and-violin-plot/build/Chart.BoxPlot.js"></script>
 </head>
 <body>
-  <h2>Boxplot - Ritmo de Corrida por Piloto</h2>
-  <canvas id="boxplotChart" width="800" height="400"></canvas>
-
-  <h2>Smoothed Lap-by-Lap Racepace</h2>
-  <canvas id="lineChart" width="800" height="400"></canvas>
-
-  <script src="scripts/metry.js"></script>
+  <h2 id="titulo">📍 Corrida</h2>
+  <canvas id="boxplot" width="900" height="400"></canvas>
+  <canvas id="linhas" width="900" height="400"></canvas>
 </body>
+  <script src="scripts/analise.js"></script>
 </html>
