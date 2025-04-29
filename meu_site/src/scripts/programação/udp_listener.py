@@ -69,6 +69,10 @@ def process_lap_data(data, dados_tempos, telemetria, telemetria_volta):
                 "currentLap": current_lap
             }
     print(f"Dados de tempos atualizados: {dados_tempos}")
+# Dentro de udp_listener.py ou process_motion.py
+car_positions = {}  # Exemplo: {'HAM': (123.4, 45.6), 'VER': (130.1, 40.8)}
+
+    
 
 def verificar_limites_pista(posicao_x, posicao_z, track_limits, track_id):
     limites = track_limits.get(track_id, track_limits[-1])  # Obtém os limites da pista atual ou os padrões

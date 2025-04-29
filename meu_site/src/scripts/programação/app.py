@@ -6,6 +6,8 @@ import os
 import json
 import struct
 from programação.udp_listener import coletar_dados_udp
+from flask_cors import CORS
+from programação.udp_listener import car_positions
 
 # ==== Configurações do Flask e SocketIO ====
 app = Flask(__name__, static_folder='.', static_url_path='')
@@ -81,6 +83,14 @@ telemetria = {
 }
 
 # ==== Rotas ====
+  # Import direto
+
+app = Flask(__name__)
+CORS(app)
+
+@app.route("/api/map_data")
+def map_data():
+    return jsonify(car_positions)
 
 @app.route('/')
 def index():
