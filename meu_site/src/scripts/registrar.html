@@ -8,20 +8,23 @@
 <body>
 <div class="login-page">
     <div class="login-box">
-      <h2>Bem-vindo de volta!</h2>
+      <h2>Bem-vindo ao cadastro!</h2>
       <p>Estamos felizes em vê-lo novamente.</p>
       
       <form class="login-form">
+        <label for="name">Nome</label>
+        <input type="text" id="name" placeholder="Digite seu nome" required>
+  
         <label for="email">E-mail</label>
         <input type="email" id="email" placeholder="Digite seu e-mail" required>
   
         <label for="password">Senha</label>
         <input type="password" id="password" placeholder="Digite sua senha" required>
   
-        <button type="submit">Entrar</button>
+        <button type="submit">Registrar</button>
   
         <div class="register-link">
-          <p>Precisa de uma conta? <a href="registrar.html">Registrar</a></p>
+          <p>Já tem uma conta? <a href="perfil.html">Entrar</a></p>
         </div>
       </form>
     </div>
@@ -30,5 +33,3 @@
   <script src="scripts/login.js"></script>
 </body>
 </html>
-<!-- <script src="scripts/login.js"></script> -->
-<!-- <script src="scripts/app.js"></script> -->  

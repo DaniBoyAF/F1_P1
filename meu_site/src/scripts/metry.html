@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/style5.css">
+    <script src="scripts/metry.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <a href="index.html"><button class="sidebar-btn">Menu</button></a>
+    <div class="header">
+      <h1 id="player-name">-</h1>
+      <div class="info">
+        <span id="race-mode">RACE</span>
+        <span id="position">POS -</span>
+        <span id="lap">LAP -/-</span>
+        <button class="toggle-btn" onclick="toggleGapMode()">Switch to Interval</button>
+        <button class="toggle-btn" onclick="toggleGapMode()">Switch to Gap</button>
+      </div>
+    </div>
+    
+    <!-- Corpo Principal -->
+    <div class="main">
+      <!-- Classificação -->
+      <div class="classification">
+        <table>
+          <thead>
+            <tr>
+              <th class="position">POS</th>
+              <th class="driver">DRIVER</th>
+              <th class="gap">GAP</th>
+              <th class="tire">TIRE</th>
+              <th class="PENALTY">PENALTY</th>
+            </tr>
+          </thead>
+          <tbody id="classification-body">
+            <!-- Espaço para até 22 pilotos -->
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Telemetria -->
+      <div class="telemetry">
+        <div class="gap" id="gap-to-leader">-</div>
+        <div class="position" id="current-position">-</div>
+        <div class="laps" id="laps">-</div>
+      </div>
+
+      <!-- Tempos de Volta -->
+      <div class="lap-times">
+        <h2>LAP TIMES</h2>
+        <div>
+          <div class="time" id="current-lap-time">-</div>
+          <div class="label">CURRENT LAP</div>
+        </div>
+        <div>
+          <div class="time" id="last-lap-time">-</div>
+          <div class="label">LAST LAP</div>
+        </div>
+        <div>
+          <div class="time" id="best-lap-time">-</div>
+          <div class="label">BEST LAP</div>
+        </div>
+        <!-- Nova seção para dados dos pneus -->
+        <div class="tire-data">
+          <h2>TYRE DATA</h2>
+          <div id="tire-info">
+            <div>Type: <span id="tire-type">-</span></div>
+            <div>Wear: <span id="tire-wear">-</span>%</div>
+            <div>Age: <span id="tire-age">-</span> laps</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+      <div class="overtake">
+        OVERTAKE <span id="overtake-status">-</span>
+      </div>
+      <div class="temps">
+        <span>TRACK <span id="track-temp">-</span>°C</span>
+        <span>AIR <span id="air-temp">-</span>°C</span>
+      </div>
+    </div>
+  </div>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

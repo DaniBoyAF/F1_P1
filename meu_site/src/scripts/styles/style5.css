@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+    color: #ff0000;
+  }
+
+  .header .info {
+    display: flex;
+    gap: 15px;
+  }
+
+  .header .info span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .classification, .lap-times {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    width: 30%;
+  }
+
+  .classification table, .lap-times table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .classification th, .classification td, .lap-times th, .lap-times td {
+    padding: 5px;
+    text-align: left;
+  }
+
+  .classification th {
+    background-color: #333;
+    font-size: 12px;
+  }
+
+  .classification td {
+    font-size: 12px;
+    border-bottom: 1px solid #424242;
+  }
+
+  .classification .position {
+    width: 20px;
+    text-align: center;
+  }
+
+  .classification .driver {
+    width: 50px;
+  }
+
+  .classification .gap {
+    width: 60px;
+    text-align: right;
+  }
+
+  .classification .tire {
+    width: 30px;
+    text-align: center;
+  }
+
+  .tire-S { color: #ff0000; } /* Soft */
+  .tire-M { color: #ffff00; } /* Medium */
+  .tire-H { color: #ffffff; } /* Hard */
+  .tire-I { color: #00ff00; } /* Inter */
+  .tire-W { color: #00b7eb; } /* Wet */
+
+  .telemetry {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    text-align: center;
+  }
+
+  .telemetry .gap {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+    margin-bottom: 10px;
+  }
+
+  .telemetry .position {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .telemetry .laps {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .lap-times {
+    text-align: center;
+  }
+
+  .lap-times h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .lap-times .time {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .lap-times .label {
+    font-size: 12px;
+    color: #bbb;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .footer .overtake {
+    font-size: 12px;
+  }
+
+  .footer .temps {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .toggle-btn {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+  }
