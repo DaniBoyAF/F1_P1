@@ -6,7 +6,7 @@
   }
 
   body {
-    background-color: #1a1a1a;
+    background-color: #9e9e9e;
     color: #fff;
     padding: 20px;
   }
@@ -27,7 +27,7 @@
 
   .header h1 {
     font-size: 24px;
-    color: #ff0000;
+    color: #000000;
     text-transform: uppercase;
   }
 
@@ -97,7 +97,7 @@
 
   .telemetry-graphs h2 {
     font-size: 16px;
-    color: #ff0000;
+    color: #0b9c0b;
     text-transform: uppercase;
   }
 
