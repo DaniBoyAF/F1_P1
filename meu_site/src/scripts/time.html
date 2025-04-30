@@ -3,34 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Telemetry - F1</title>
-  <link rel="stylesheet" href="styles/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/socket.io@4.7.5/client-dist/socket.io.min.js"></script>
+  <link rel="icon" href="/static/images/favicon.png" type="image/png" />
+  <title>F1 Tempo - Telemetry Comparison</title>
+  <link rel="stylesheet" href="styles/style7.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts/telemetry.js"></script>
+  <script src="scripts/anotherScript.js"></script>
 </head>
 <body>
   <div class="container">
+    <!-- Cabeçalho -->
     <div class="header">
-      <h1>Live Telemetry</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="map.html">Map</a>
-        <a href="settings.html">Settings</a>
-      </nav>
-    </div>
-    <div class="main">
-      <div class="telemetry-data">
-        <h2>Telemetry Data</h2>
-        <p><strong>Speed:</strong> <span id="speed">0</span> km/h</p>
-        <p><strong>Throttle:</strong> <span id="throttle">0</span></p>
-        <p><strong>Brake:</strong> <span id="brake">0</span></p>
-        <p><strong>Gear:</strong> <span id="gear">0</span></p>
-        <p><strong>RPM:</strong> <span id="rpm">0</span></p>
-        <p><strong>Position (X, Y, Z):</strong> <span id="position">0, 0, 0</span></p>
+      <h1>Telemetry</h1>
+      <div class="selectors">
+        <select id="season" onchange="updateEventSelector()">
+          <option value="">Select Season</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <select id="event" onchange="updateSessionSelector()">
+          <option value="">Select Event</option>
+        </select>
+        <select id="session" onchange="updatePilotSelector()">
+          <option value="">Select Session</option>
+        </select>
+        <select id="pilot1" onchange="updateLapSelector('pilot1', 'lap1')">
+          <option value="">Select Pilot 1</option>
+        </select>
+        <select id="lap1" onchange="updateMapAndGraphs()">
+          <option value="">Select Lap for Pilot 1</option>
+        </select>
+        <select id="pilot2" onchange="updateLapSelector('pilot2', 'lap2')">
+          <option value="">Select Pilot 2</option>
+        </select>
+        <select id="lap2" onchange="updateMapAndGraphs()">
+          <option value="">Select Lap for Pilot 2</option>
+        </select>
       </div>
     </div>
+
+    <!-- Corpo Principal -->
+    <div class="main">
+      <!-- Mapa da Pista -->
+      <div class="track-map">
+        <canvas id="trackCanvas" width="400" height="400"></canvas>
+        <div class="start-label">Start</div>
+      </div>
+
+      <!-- Gráficos de Telemetria -->
+      <div class="telemetry-graphs">
+        <button class="save-btn" onclick="showSavedTelemetry()">Ver Dados Salvos</button>
+        <div id="saved-telemetry-list" style="margin-top:20px; background:#222; padding:15px; border-radius:8px;"></div>
+        <div>
+          <h2>Speed (km/h)</h2>
+          <canvas id="speedChart"></canvas>
+        </div>
+        <div>
+          <h2>Throttle (%)</h2>
+          <canvas id="throttleChart"></canvas>
+        </div>
+        <div>
+          <h2>Brake (%)</h2>
+          <canvas id="brakeChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+      <button class="clear-btn" onclick="clearMarkers()">Clear Marker</button>
+    </div>
   </div>
-    <script src="scripts/live_telemetry.js"></script>
-    <script src="scripts/app.js"></script>
+  <script src="scripts/telemetry.js"></script>
 </body>
 </html>
-<!-- Compare this snippet from meu_site/src/scripts/live_telemetry.js: -->
