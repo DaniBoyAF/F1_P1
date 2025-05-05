@@ -9,13 +9,16 @@ from threading import Thread
 import struct
 from flask import Flask
 from session import get_track_nome
-
+import json
+import os
+import time
 UDP_IP = "0.0.0.0"
 UDP_PORT = 20777
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((UDP_IP, UDP_PORT))
 
+max_speeds = {}  # Dicionário para armazenar as velocidades máximas de cada piloto
 def coletar_dados_udp(posicoes, track_info, telemetria, track_limits, flag_map, dados_tempos, telemetria_volta):
     while True:
         data, addr = sock.recvfrom(2048)
@@ -105,6 +108,41 @@ def process_participants_data(data, posicoes):
         name_bytes = struct.unpack_from("c" * 48, data, offset + 9)  # Nome do piloto (48 bytes)
         name = b"".join(name_bytes).decode("utf-8").strip("\x00")  # Decodifica e remove caracteres nulos
         posicoes[i]["nome"] = name  # Atualiza o nome do piloto na variável global
+
+        if i not in max_speeds or speed > max_speeds[i]["velocidade"]:
+            max_speeds[i] = {
+                "piloto": name,
+                "velocidade": speed
+            }
+
+    while True:
+      data, _ = sock.recvfrom(2048)
+
+      # Cabeçalho (24 bytes): session info
+      header = struct.unpack('<HBBBBQfIBB', data[:24])
+      packet_id = header[5]
+
+      if packet_id == 6:  # ID do pacote de telemetria (packetId = 6)
+        for i in range(22):  # 22 carros
+            offset = 24 + i * 60  # cada bloco de piloto tem 60 bytes
+            car_telemetry = struct.unpack('<HBBBBfHffHHBBBBHHH', data[offset:offset+60])
+            speed = car_telemetry[0]
+            driver_index = i
+
+            if driver_index not in max_speeds or speed > max_speeds[driver_index]["velocidade"]:
+                max_speeds[driver_index] = {
+                    "piloto": f"Driver {driver_index}",
+                    "velocidade": speed
+                }
+
+    # Salvar a cada X segundos ou com uma tecla
+      with open("static/velocidades.json", "w") as f:
+        json.dump(list(max_speeds.values()), f, indent=2)
+        f.flush()
+        time.sleep(5)
+    
+
+
 
 if __name__ == "__main__":
     # Inicialize a variável telemetria_volta

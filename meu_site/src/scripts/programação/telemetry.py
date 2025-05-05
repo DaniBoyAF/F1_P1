@@ -22,4 +22,4 @@ def process_telemetry_data(data, telemetria):
                 "lateralAcceleration": lateral_acceleration,
                 "fuel": fuel
             })
-        
+

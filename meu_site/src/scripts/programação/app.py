@@ -10,6 +10,7 @@ from flask_cors import CORS
 from programação.udp_listener import car_positions
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
+from src.scripts.programa.telemetria import velocidades_max
 
 # ==== Configurações do Flask e SocketIO ====
 app = Flask(__name__, static_folder='.', static_url_path='')
@@ -252,8 +253,21 @@ def login():
 def logout():
     session.pop('username', None)
     return redirect('/')
+@app.route('/grafico')
+def grafico():
+    return render_template('grafico.html')
 
-# ==== Inicialização ====
+@app.route('/dados_grafico')
+def dados_grafico():
+    labels = list(velocidades_max.keys())
+    valores = list(velocidades_max.values())
+    return jsonify({"labels": labels, "valores": valores})
+
+@app.route('/speed')
+def speed():
+    return render_template('velocidades.html')
+
+
 if __name__ == "__main__":
     udp_thread = Thread(target=coletar_dados_udp, args=(posicoes, track_info, telemetria, track_limits, flag_map, dados_tempos, telemetria_volta))
     udp_thread.daemon = True
